@@ -60,7 +60,7 @@ sont récupérées automatiquement.
   → **Run workflow**.
 - **En local** :
   ```bash
-  SEMRUSH_API_KEY=xxxx SEMRUSH_PROJECT_ID=xxxx python scripts/refresh.py
+  SEMRUSH_API_KEY=semrtkn-pat-1JESkooFTZK_ndTw5FEbWA-CJ2s38hJhAn78AdjpFkakxT6r71MEzRp SEMRUSH_PROJECT_ID=xxxx python scripts/refresh.py
   ```
 
 ## Sources de données
