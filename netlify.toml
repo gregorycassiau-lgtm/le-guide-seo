@@ -1,0 +1,9 @@
+# Configuration Netlify — site statique, aucun build nécessaire.
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/data.json"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
