@@ -41,33 +41,31 @@ Dans GitHub : **Settings → Secrets and variables → Actions → New repositor
 
 | Secret | Valeur | Obligatoire |
 |---|---|---|
-| `SEMRUSH_API_KEY` | Votre clé API Semrush (Analytics) | Oui |
-| `SEMRUSH_PROJECT_ID` | ID du projet de Suivi de position ANCV | Non* |
+| `SEMRUSH_API_KEY` | Votre clé / PAT Semrush (Subscription info → API units) | Oui |
+| `SEMRUSH_COUNTRY` | Code pays, ex. `fr` (défaut : `fr`) | Non |
+| `SEMRUSH_MONTH` | Mois `YYYY-MM` (défaut : mois complet précédent) | Non |
 
-\* Sans `SEMRUSH_PROJECT_ID`, les colonnes **volume / KD / intention** sont remplies
-pour toute la liste, mais **position / position précédente** restent vides (« n/p »).
-Avec un `SEMRUSH_PROJECT_ID` auquel la clé API a accès, les positions réelles suivies
-sont récupérées automatiquement.
-
-> L'ID du projet est le premier nombre dans l'URL de la campagne Semrush :
-> `https://fr.semrush.com/tracking/landscape/<PROJECT_ID>_<CAMPAIGN_ID>.html`
-> La clé API doit appartenir au **compte Semrush propriétaire** de ce projet.
+> ⚠️ **Ne mettez jamais la clé en clair dans le code ou le README** : utilisez
+> uniquement les secrets GitHub. Une clé exposée dans un dépôt doit être régénérée.
 
 ## Rafraîchissement
 
 - **Automatique** : tous les lundis à 06:00 UTC (voir le cron dans le workflow).
 - **Manuel** : onglet **Actions** du dépôt → *Rafraîchissement hebdomadaire Semrush*
   → **Run workflow**.
-- **En local** :
+- **En local** (ne pas committer la clé) :
   ```bash
-  SEMRUSH_API_KEY=semrtkn-pat-1JESkooFTZK_ndTw5FEbWA-CJ2s38hJhAn78AdjpFkakxT6r71MEzRp SEMRUSH_PROJECT_ID=xxxx python scripts/refresh.py
+  export SEMRUSH_API_KEY="votre_cle"
+  python scripts/refresh.py
   ```
 
 ## Sources de données
 
-- **Analytics API** (`phrase_these`, `phrase_kdi`) : volume, CPC, intention, KD —
-  fonctionne avec toute clé API Analytics.
-- **Position Tracking API** (`tracking_position_organic`) : position, position
-  précédente, URL — nécessite l'accès au projet via la clé API.
+- **Keyword Metrics API v4** (`/apis/v4/keywords/v1/metrics`, auth `Authorization: Apikey`) :
+  volume, KD, intention, CPC — un appel par mot-clé. Fonctionne avec un Personal
+  Access Token Semrush.
+- **Positions** (position, position précédente, URL) : non encore exposées par
+  l'API v4. Elles se rempliront quand l'API de Suivi de position sera branchée
+  (campagne ayant collecté des données + clé compatible). En attendant : « n/p ».
 
 Base de données : `fr` (Google France). Modifiable via la variable `SEMRUSH_DATABASE`.
