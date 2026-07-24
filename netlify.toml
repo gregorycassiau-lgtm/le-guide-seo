@@ -1,7 +1,7 @@
-# Configuration Netlify — site statique, aucun build nécessaire.
+# Configuration Netlify — régénère data.json depuis l'export Semrush au déploiement.
 [build]
   publish = "."
-  command = ""
+  command = "python3 scripts/build_from_csv.py"
 
 [[headers]]
   for = "/data.json"

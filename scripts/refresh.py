@@ -109,12 +109,23 @@ def main():
     display = load_keywords()
     print("Mots-clés:", len(display), "| pays:", COUNTRY, "| mois:", MONTH)
 
+    # Préserve les positions/URL/type/tags déjà présentes (issues de l'export CSV)
+    prev_map = {}
+    if os.path.exists(OUT):
+        try:
+            for r in json.load(open(OUT, encoding="utf-8")).get("rows", []):
+                prev_map[norm(r.get("kw", ""))] = r
+        except Exception:
+            pass
+
     def work(item):
         raw, k = item
         m = keyword_metrics(raw) or {"vol": 0, "kd": None, "intent": "", "cpc": 0.0}
+        old = prev_map.get(k, {})
         return {
             "kw": raw, "vol": m["vol"], "kd": m["kd"], "intent": m["intent"], "cpc": m["cpc"],
-            "pos": None, "prev": None, "diff": None, "url": "",
+            "pos": old.get("pos"), "prev": old.get("prev"), "diff": old.get("diff"),
+            "type": old.get("type", ""), "tags": old.get("tags", ""), "url": old.get("url", ""),
         }
 
     rows = []

@@ -47,9 +47,12 @@
   .evo{font-weight:700;}
   .evo.up{color:var(--up);}.evo.down{color:var(--down);}.evo.flat{color:var(--flat);}
   .chip{font-size:11px;padding:2px 8px;border-radius:20px;background:#eef1f6;color:var(--muted);white-space:nowrap;}
+  td.tags{white-space:normal;max-width:200px;}
+  .tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:5px;background:#eef4ff;color:#3a5a8c;margin:1px 2px 1px 0;}
   tr:hover td{background:#f9fbff;}
   footer{text-align:center;color:var(--muted);font-size:12px;margin-top:22px;}
-  @media (max-width:720px){td.url,th.url,td.intent,th.intent{display:none;}}
+  @media (max-width:900px){td.tags,th.tags{display:none;}}
+  @media (max-width:720px){td.url,th.url,td.intent,th.intent,td.type,th.type{display:none;}}
 </style>
 </head>
 <body>
@@ -62,7 +65,7 @@
   <div class="note" id="note" style="display:none"></div>
 
   <div class="controls">
-    <input type="search" id="q" placeholder="Rechercher un mot-clé…">
+    <input type="search" id="q" placeholder="Rechercher (mot-clé, tag, URL)…">
     <span class="grp">Statut
       <select id="fstatus">
         <option value="all">Tous</option>
@@ -82,7 +85,7 @@
 
   <div class="count" id="count">Chargement…</div>
   <div class="tablewrap"><table><thead><tr id="head"></tr></thead><tbody id="body"></tbody></table></div>
-  <footer>Reporting SEO — liste de mots-clés Le Guide ANCV. Volume &amp; KD : données Semrush (base FR). Mise à jour automatique hebdomadaire via GitHub Actions.</footer>
+  <footer>Reporting SEO — Le Guide ANCV. Source : Suivi de position Semrush (Google France). Position, URL, type SERP, tags, volume, KD, intention.</footer>
 </div>
 
 <script>
@@ -93,8 +96,9 @@ const cols=[
   {key:"kd",label:"KD %",type:"num"},
   {key:"intent",label:"Intention",type:"str"},
   {key:"pos",label:"Position",type:"num"},
-  {key:"prev",label:"Pos. préc.",type:"num"},
   {key:"diff",label:"Évolution",type:"num"},
+  {key:"type",label:"Type SERP",type:"str"},
+  {key:"tags",label:"Tags",type:"str"},
   {key:"url",label:"URL positionnée",type:"str"},
 ];
 let sortKey="vol",sortDir=-1;
@@ -115,7 +119,7 @@ function filtered(){
     if(fpos&&(r.pos==null||r.pos>fpos))return false;
     if(fkd&&(r.kd==null||r.kd>fkd))return false;
     if(r.vol<fvol)return false;
-    if(q&&!r.kw.toLowerCase().includes(q))return false;
+    if(q&&!((r.kw+" "+(r.tags||"")+" "+(r.url||"")).toLowerCase().includes(q)))return false;
     return true;
   });
 }
@@ -131,7 +135,7 @@ function sorted(rows){
 function renderHead(){
   g("head").innerHTML=cols.map(c=>{
     const a=c.key===sortKey?(sortDir<0?"▼":"▲"):"";
-    const cl=(c.key==="url"?"url":"")+(c.key==="intent"?" intent":"");
+    const cl=(c.key==="url"?"url":"")+(c.key==="intent"?" intent":"")+(c.key==="tags"?" tags":"")+(c.key==="type"?" type":"");
     return `<th data-k="${c.key}" class="${cl}">${c.label} <span class="arrow">${a}</span></th>`;
   }).join("");
   document.querySelectorAll("#head th").forEach(th=>{th.onclick=()=>{const k=th.dataset.k;
@@ -146,8 +150,9 @@ function render(){
       <td class="num">${r.kd==null?'<span class="kd na">n/d</span>':`<span class="kd ${kdClass(r.kd)}">${r.kd}</span>`}</td>
       <td class="intent">${r.intent?`<span class="chip">${r.intent}</span>`:"—"}</td>
       <td class="num">${r.pos==null?'<span class="pos na">n/p</span>':`<span class="pos ${r.pos<=3?'top3':''}">${r.pos}</span>`}</td>
-      <td class="num">${r.prev==null?"—":r.prev}</td>
       <td class="num">${evoCell(r.diff)}</td>
+      <td class="type">${r.type?`<span class="chip">${r.type}</span>`:"—"}</td>
+      <td class="tags">${r.tags?r.tags.split("|").map(t=>`<span class="tag">${t.trim()}</span>`).join(" "):"—"}</td>
       <td class="url">${r.url?`<a href="${r.url}" target="_blank" rel="noopener">${shortUrl(r.url)}</a>`:"—"}</td>
     </tr>`).join("");
   g("count").textContent=`${rows.length} mot(s)-clé(s) affiché(s) sur ${DATA.length}`;
@@ -164,9 +169,9 @@ function renderKpis(){
 }
 function exportCSV(){
   const rows=sorted(filtered());
-  const head=["Mot-cle","Volume","KD","Intention","Position","Position precedente","Evolution","URL"];
+  const head=["Mot-cle","Volume","KD","Intention","Position","Evolution","Type SERP","Tags","URL"];
   const lines=[head.join(";")].concat(rows.map(r=>
-    [r.kw,r.vol,r.kd==null?"":r.kd,r.intent,r.pos==null?"":r.pos,r.prev==null?"":r.prev,r.diff==null?"":r.diff,r.url]
+    [r.kw,r.vol,r.kd==null?"":r.kd,r.intent,r.pos==null?"":r.pos,r.diff==null?"":r.diff,r.type||"",r.tags||"",r.url]
     .map(v=>`"${(""+v).replace(/"/g,'""')}"`).join(";")));
   const blob=new Blob(["﻿"+lines.join("\n")],{type:"text/csv;charset=utf-8"});
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="suivi_leguide_ancv.csv";a.click();
@@ -176,11 +181,12 @@ g("export").addEventListener("click",exportCSV);
 
 fetch("./data.json?v="+Date.now()).then(r=>r.json()).then(p=>{
   DATA=p.rows||[];
-  g("sub").innerHTML=`Liste de mots-clés suivie &middot; Google France &middot; Source : Semrush &middot; Mise à jour du ${p.generated||"—"}`;
+  const per=p.period?(" &middot; relevé "+p.period.split(" - ")[0]):"";
+  g("sub").innerHTML=`Campagne de suivi Semrush &middot; Google France${per} &middot; Mise à jour du ${p.generated||"—"}`;
   if(p.ranked!=null && p.ranked < (p.count||0)){
     const n=g("note");n.style.display="block";
-    n.innerHTML=`<b>Positions.</b> ${p.ranked}/${p.count} mots-clés positionnés dans le top 100. « n/p » = non positionné. `+
-      `Les positions se remplissent quand la clé API a accès au projet de suivi (voir README).`;
+    n.innerHTML=`<b>${p.ranked}/${p.count} mots-clés positionnés</b> dans le top 100 &middot; « n/p » = hors top 100. `+
+      `Données issues de l'export du Suivi de position Semrush (position, URL, type SERP, tags inclus).`;
   }
   render();
 }).catch(e=>{g("count").textContent="Erreur de chargement de data.json : "+e;});
