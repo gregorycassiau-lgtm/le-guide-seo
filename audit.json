@@ -1,0 +1,133 @@
+{
+ "generated": "2026-07-24 23:24 UTC",
+ "domain": "leguide.ancv.com",
+ "audit_date": "2026-07-18",
+ "score": 80,
+ "pages_crawled": 332,
+ "internal_checks": [
+  {
+   "id": 213,
+   "title": "Pages avec un seul lien interne",
+   "count": 0
+  },
+  {
+   "id": 212,
+   "title": "Profondeur de clic > 3",
+   "count": 0
+  },
+  {
+   "id": 8,
+   "title": "Liens internes cassés",
+   "count": 0
+  },
+  {
+   "id": 108,
+   "title": "Trop de liens sur la page",
+   "count": 0
+  },
+  {
+   "id": 123,
+   "title": "Liens internes en nofollow",
+   "count": 0
+  },
+  {
+   "id": 207,
+   "title": "Pages orphelines (sitemap)",
+   "count": 0
+  },
+  {
+   "id": 206,
+   "title": "Pages orphelines (Analytics)",
+   "count": 0
+  }
+ ],
+ "issues": [
+  {
+   "title": "Pages en erreur 4xx",
+   "count": 25,
+   "sev": "error"
+  },
+  {
+   "title": "Balises title en double",
+   "count": 2,
+   "sev": "error"
+  },
+  {
+   "title": "Liens externes cassés",
+   "count": 10,
+   "sev": "warning"
+  },
+  {
+   "title": "Méta-descriptions manquantes",
+   "count": 261,
+   "sev": "warning"
+  },
+  {
+   "title": "Faible ratio texte/HTML",
+   "count": 261,
+   "sev": "warning"
+  },
+  {
+   "title": "Underscores dans l'URL",
+   "count": 256,
+   "sev": "warning"
+  },
+  {
+   "title": "Pages non compressées",
+   "count": 261,
+   "sev": "warning"
+  },
+  {
+   "title": "JS/CSS non compressés",
+   "count": 2088,
+   "sev": "warning"
+  },
+  {
+   "title": "JS/CSS non minifiés",
+   "count": 261,
+   "sev": "warning"
+  },
+  {
+   "title": "Faible nombre de mots",
+   "count": 13,
+   "sev": "warning"
+  },
+  {
+   "title": "Plusieurs balises H1",
+   "count": 259,
+   "sev": "notice"
+  },
+  {
+   "title": "Liens sans texte d'ancre",
+   "count": 41,
+   "sev": "notice"
+  }
+ ],
+ "errors_4xx": [
+  "https://leguide.ancv.com/ptl/voyages_transports/transports_maritimes/labaladeuzh_baladeenmer/808047001001",
+  "https://leguide.ancv.com/ptl/restauration/restauration/restaurant_les_grottes/627094001001",
+  "https://leguide.ancv.com/ptl/restauration/restauration/restaurant_le_moulin_du_gapeau/766701001001",
+  "https://leguide.ancv.com/ptl/restauration/restauration/restaurant_le_bouchon_nivernais/604150001001",
+  "https://leguide.ancv.com/ptl/restauration/restauration/restaurant_la_fine_heure/357279001001",
+  "https://leguide.ancv.com/ptl/restauration/restauration/la_bouillabaisse_port_de_la_madrague_presqu_ile_de_giens/72568100100",
+  "https://leguide.ancv.com/ptl/restauration/restauration/gabrielle/755732001001",
+  "https://leguide.ancv.com/ptl/restauration/restauration/brasserie_georges_1836/022058001001",
+  "https://leguide.ancv.com/ptl/restauration/restauration/a_merendella_citadina/687434001001",
+  "https://leguide.ancv.com/ptl/loisirs_sportifs/sports_nautiques/as_gerardmer_canoe_kayak/633091001001",
+  "https://leguide.ancv.com/ptl/loisirs_sportifs/sports_aquatiques/pole_plongee_normandie/301374001001",
+  "https://leguide.ancv.com/ptl/loisirs_sportifs/sports_aquatiques/ecole_plongee_ile_rousse/373844001001",
+  "https://leguide.ancv.com/ptl/loisirs_sportifs/sports_a_roulettes/club_cycliste_team_cote_de_granit_rose/713229001001",
+  "https://leguide.ancv.com/ptl/hebergement/location_de_vacances/location_meublee_mozziconacci_michel/425592001001",
+  "https://leguide.ancv.com/ptl/hebergement/hotellerie_plein_air/camping_auberge_les_ranchisses/029900001001",
+  "https://leguide.ancv.com/ptl/hebergement/hotellerie/hotel_restaurant_thalamer_novotel/063796001001",
+  "https://leguide.ancv.com/ptl/hebergement/hotellerie/aux_balcons_du_sancy/378545001001",
+  "https://leguide.ancv.com/ptl/arts_culture_decouverte/structure_de_loisirs/virtualtimeparischatelet_jeuxescapegamesenrealitevirtuelle/795584001001",
+  "https://leguide.ancv.com/ptl/arts_culture_decouverte/spectacles/fete_des_remparts/058169001001",
+  "https://leguide.ancv.com/ptl/arts_culture_decouverte/sitenaturel_urbain/la_cite_de_la_mer/181639001001",
+  "https://leguide.ancv.com/ptl/arts_culture_decouverte/sitenaturel_urbain/champagne_a._viot_et_fils/767380001001",
+  "https://leguide.ancv.com/ptl/arts_culture_decouverte/parcs_animaliers/marineland/061072001001",
+  "https://leguide.ancv.com/ptl/arts_culture_decouverte/monuments/nimes_romaine/100734008008",
+  "https://leguide.ancv.com/ptl/arts_culture_decouverte/monuments/chateau_et_domaine_national_de_chambord/415454001001",
+  "https://leguide.ancv.com/ptl/arts_culture_decouverte/expos_et_musees/la_grande_saline/427534001001"
+ ]
+}

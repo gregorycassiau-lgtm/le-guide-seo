@@ -3,115 +3,120 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Suivi de positionnement SEO — Le Guide ANCV</title>
+<title>Cockpit SEO — Le Guide ANCV</title>
 <style>
   :root{--bg:#f5f7fa;--card:#fff;--ink:#1a2332;--muted:#6b7688;--line:#e4e8ef;
     --brand:#0a5ad4;--brand-soft:#e8f0fd;--up:#1a9e5f;--down:#d9433f;--flat:#8a94a6;
-    --b1:#1a9e5f;--b2:#5bc07a;--b3:#e0a52e;--b4:#e0762e;--b5:#d9433f;--b6:#b8bec9;}
+    --b1:#1a9e5f;--b2:#5bc07a;--b3:#e0a52e;--b4:#e0762e;--b5:#d9433f;--b6:#b8bec9;
+    --err:#d9433f;--warn:#e0a52e;--notice:#6b7688;}
   *{box-sizing:border-box;}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     background:var(--bg);color:var(--ink);font-size:14px;}
-  header{background:linear-gradient(120deg,#0a5ad4,#0846a6);color:#fff;padding:24px 30px;}
+  header{background:linear-gradient(120deg,#0a5ad4,#0846a6);color:#fff;padding:22px 30px;}
   header h1{margin:0 0 4px;font-size:20px;font-weight:700;}
   header .sub{font-size:13px;opacity:.85;}
-  .wrap{max-width:1320px;margin:0 auto;padding:20px 24px 60px;}
-  .tabs{display:flex;gap:6px;margin-bottom:18px;}
-  .tab{padding:9px 18px;border:1px solid var(--line);background:#fff;border-radius:9px;cursor:pointer;font-weight:600;color:var(--muted);}
+  .wrap{max-width:1320px;margin:0 auto;padding:18px 24px 60px;}
+  .tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+  .tab{padding:9px 16px;border:1px solid var(--line);background:#fff;border-radius:9px;cursor:pointer;font-weight:600;color:var(--muted);}
   .tab.active{background:var(--brand);color:#fff;border-color:var(--brand);}
-  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:20px;}
-  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;}
-  .kpi .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
-  .kpi .val{font-size:23px;font-weight:700;margin-top:6px;}
-  .note{background:#fff8e6;border:1px solid #f0d98a;color:#7a5b12;border-radius:10px;padding:11px 15px;font-size:13px;margin-bottom:18px;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:18px;}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .kpi .lbl{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+  .kpi .val{font-size:22px;font-weight:700;margin-top:6px;}
+  .kpi .val.g{color:var(--up);} .kpi .val.r{color:var(--down);}
+  .note{background:#fff8e6;border:1px solid #f0d98a;color:#7a5b12;border-radius:10px;padding:11px 15px;font-size:13px;margin-bottom:16px;}
+  .note.ok{background:#eaf7ef;border-color:#a9dcbd;color:#1a6e42;}
+  .note.warn{background:#fdeceb;border-color:#f0b3ae;color:#8a2b25;}
   .controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px;}
   .controls input,.controls select{padding:9px 12px;border:1px solid var(--line);border-radius:9px;font-size:14px;background:#fff;color:var(--ink);}
   .controls input[type=search]{flex:1;min-width:200px;}
   .controls .grp{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);}
   .btn{background:var(--brand);color:#fff;border:none;padding:9px 16px;border-radius:9px;cursor:pointer;font-size:14px;font-weight:600;}
   .btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--brand);}
-  .activefilter{display:none;align-items:center;gap:8px;background:var(--brand-soft);color:var(--brand);
-    border:1px solid #bcd4f7;border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600;margin-bottom:12px;}
-  .activefilter b{font-weight:700;} .activefilter .x{cursor:pointer;font-weight:700;}
+  .activefilter{display:none;align-items:center;gap:8px;background:var(--brand-soft);color:var(--brand);border:1px solid #bcd4f7;border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600;margin-bottom:12px;}
+  .activefilter .x{cursor:pointer;font-weight:700;}
   .count{font-size:13px;color:var(--muted);margin-bottom:8px;}
   .tablewrap{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:auto;}
   table{width:100%;border-collapse:collapse;font-size:13px;}
-  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
+  th,td{padding:10px 13px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;}
   th{position:sticky;top:0;background:#fafbfd;font-weight:600;cursor:pointer;user-select:none;z-index:1;}
+  th.nos{cursor:default;}
   th:hover{color:var(--brand);} th .arrow{font-size:10px;opacity:.5;}
-  td.kw{white-space:normal;max-width:300px;font-weight:600;}
-  td.url a{color:var(--brand);text-decoration:none;font-size:12px;} td.url a:hover{text-decoration:underline;}
+  td.kw{white-space:normal;max-width:280px;font-weight:600;}
+  td.url a,a.u{color:var(--brand);text-decoration:none;font-size:12px;} td.url a:hover{text-decoration:underline;}
   td.num{text-align:right;font-variant-numeric:tabular-nums;}
   .pos{display:inline-block;min-width:26px;text-align:center;padding:2px 7px;border-radius:6px;font-weight:700;background:var(--brand-soft);color:var(--brand);}
   .pos.top3{background:#e5f6ec;color:var(--up);} .pos.na{background:#f0f1f4;color:var(--muted);}
   .kd{display:inline-block;min-width:34px;text-align:center;padding:2px 7px;border-radius:6px;font-weight:600;}
-  .kd.easy{background:#e5f6ec;color:var(--up);} .kd.med{background:#fff4e0;color:#c07a12;}
-  .kd.hard{background:#fdeceb;color:var(--down);} .kd.na{background:#f0f1f4;color:var(--muted);}
+  .kd.easy{background:#e5f6ec;color:var(--up);} .kd.med{background:#fff4e0;color:#c07a12;} .kd.hard{background:#fdeceb;color:var(--down);} .kd.na{background:#f0f1f4;color:var(--muted);}
   .evo{font-weight:700;} .evo.up{color:var(--up);} .evo.down{color:var(--down);} .evo.flat{color:var(--flat);}
   .chip{font-size:11px;padding:2px 8px;border-radius:20px;background:#eef1f6;color:var(--muted);white-space:nowrap;}
-  td.tags{white-space:normal;max-width:200px;}
+  td.tags{white-space:normal;max-width:190px;}
   .tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:5px;background:#eef4ff;color:#3a5a8c;margin:1px 2px 1px 0;}
   tr:hover td{background:#f9fbff;}
-  /* stats */
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
   .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;}
-  .panel h3{margin:0 0 14px;font-size:15px;}
-  .panel h3 small{font-weight:400;color:var(--muted);font-size:12px;}
+  .panel.full{grid-column:1/-1;}
+  .panel h3{margin:0 0 14px;font-size:15px;} .panel h3 small{font-weight:400;color:var(--muted);font-size:12px;}
   .donutwrap{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
   .donut{width:150px;height:150px;border-radius:50%;flex:0 0 auto;position:relative;}
   .donut::after{content:"";position:absolute;inset:26px;background:var(--card);border-radius:50%;}
   .donut .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1;}
   .donut .center b{font-size:26px;} .donut .center span{font-size:11px;color:var(--muted);}
   .legend{display:flex;flex-direction:column;gap:7px;font-size:13px;}
-  .legend .row{display:flex;align-items:center;gap:8px;cursor:pointer;}
-  .legend .row:hover{color:var(--brand);}
-  .legend .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto;}
-  .legend .n{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:600;}
+  .legend .row{display:flex;align-items:center;gap:8px;cursor:pointer;} .legend .row:hover{color:var(--brand);}
+  .legend .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto;} .legend .n{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:600;}
   .bars{display:flex;flex-direction:column;gap:9px;}
-  .bar{display:grid;grid-template-columns:150px 1fr 46px;align-items:center;gap:10px;font-size:13px;}
-  .bar .track{background:#eef1f6;border-radius:6px;height:16px;overflow:hidden;}
-  .bar .fill{height:100%;border-radius:6px;background:var(--brand);}
-  .bar .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);}
-  .bar .lab{cursor:pointer;} .bar .lab:hover{color:var(--brand);}
+  .bar{display:grid;grid-template-columns:160px 1fr 52px;align-items:center;gap:10px;font-size:13px;}
+  .bar .track{background:#eef1f6;border-radius:6px;height:16px;overflow:hidden;} .bar .fill{height:100%;border-radius:6px;background:var(--brand);}
+  .bar .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);} .bar .lab{cursor:pointer;} .bar .lab:hover{color:var(--brand);}
   .qwtable{width:100%;border-collapse:collapse;font-size:13px;}
   .qwtable th,.qwtable td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;}
-  .qwtable td.n{text-align:right;font-variant-numeric:tabular-nums;}
-  .qwtable a{color:var(--brand);text-decoration:none;font-size:12px;}
-  .scroll{max-height:340px;overflow:auto;}
+  .qwtable td.n{text-align:right;font-variant-numeric:tabular-nums;} .qwtable a{color:var(--brand);text-decoration:none;font-size:12px;}
+  .scroll{max-height:360px;overflow:auto;}
+  .reco{font-size:11.5px;padding:2px 8px;border-radius:20px;font-weight:600;white-space:nowrap;}
+  .reco.link{background:#fdeceb;color:#b5372f;} .reco.mix{background:#fff4e0;color:#a9761a;} .reco.content{background:#e8f0fd;color:#0a5ad4;}
+  .check{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;border-bottom:1px solid var(--line);}
+  .check .ic{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;flex:0 0 auto;}
+  .check .ic.ok{background:var(--up);} .check .ic.ko{background:var(--down);}
+  .check .n{margin-left:auto;font-weight:600;font-variant-numeric:tabular-nums;}
+  .sev{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;}
+  .sev.error{background:var(--err);} .sev.warning{background:var(--warn);} .sev.notice{background:var(--notice);}
+  .spark{display:flex;align-items:flex-end;gap:3px;height:60px;}
+  .spark .b{flex:1;background:var(--brand-soft);border-radius:3px 3px 0 0;min-height:3px;}
+  .spark .b.last{background:var(--brand);}
+  .trendmeta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px;}
   footer{text-align:center;color:var(--muted);font-size:12px;margin-top:22px;}
-  @media (max-width:900px){.grid{grid-template-columns:1fr;} td.tags,th.tags{display:none;}}
-  @media (max-width:720px){td.url,th.url,td.intent,th.intent,td.type,th.type{display:none;} .bar{grid-template-columns:110px 1fr 40px;}}
+  @media (max-width:900px){.grid,.grid3{grid-template-columns:1fr;} td.tags,th.tags{display:none;}}
+  @media (max-width:720px){td.url,th.url,td.intent,th.intent,td.type,th.type{display:none;} .bar{grid-template-columns:110px 1fr 44px;}}
 </style>
 </head>
 <body>
 <header>
-  <h1>Suivi de positionnement SEO — Le Guide ANCV</h1>
-  <div class="sub" id="sub">Campagne de suivi Semrush &middot; Google France</div>
+  <h1>Cockpit SEO — Le Guide ANCV</h1>
+  <div class="sub" id="sub">Suivi de position · Netlinking · Maillage · Semrush · Google France</div>
 </header>
 <div class="wrap">
   <div class="tabs">
-    <div class="tab active" data-view="table" id="tab-table">Tableau</div>
-    <div class="tab" data-view="stats" id="tab-stats">Statistiques</div>
+    <div class="tab active" data-v="table" id="tab-table">Mots-clés</div>
+    <div class="tab" data-v="stats" id="tab-stats">Statistiques</div>
+    <div class="tab" data-v="prio" id="tab-prio">🎯 Priorités</div>
+    <div class="tab" data-v="net" id="tab-net">Netlinking</div>
+    <div class="tab" data-v="mail" id="tab-mail">Maillage &amp; technique</div>
   </div>
 
   <div class="kpis" id="kpis"></div>
   <div class="note" id="note" style="display:none"></div>
 
-  <!-- ===== VUE TABLEAU ===== -->
+  <!-- MOTS-CLES -->
   <div id="view-table">
     <div class="controls">
       <input type="search" id="q" placeholder="Rechercher (mot-clé, tag, URL)…">
-      <span class="grp">Tag
-        <select id="ftag"><option value="">Tous</option></select>
-      </span>
-      <span class="grp">Statut
-        <select id="fstatus"><option value="all">Tous</option><option value="ranked">Positionnés</option><option value="notranked">Non positionnés</option></select>
-      </span>
-      <span class="grp">Position &le;
-        <select id="fpos"><option value="0">Toutes</option><option value="3">Top 3</option><option value="10">Top 10</option><option value="20">Top 20</option></select>
-      </span>
-      <span class="grp">KD &le;
-        <select id="fkd"><option value="0">Toutes</option><option value="30">30</option><option value="50">50</option><option value="70">70</option></select>
-      </span>
+      <span class="grp">Tag <select id="ftag"><option value="">Tous</option></select></span>
+      <span class="grp">Statut <select id="fstatus"><option value="all">Tous</option><option value="ranked">Positionnés</option><option value="notranked">Non positionnés</option></select></span>
+      <span class="grp">Position &le; <select id="fpos"><option value="0">Toutes</option><option value="3">Top 3</option><option value="10">Top 10</option><option value="20">Top 20</option></select></span>
+      <span class="grp">KD &le; <select id="fkd"><option value="0">Toutes</option><option value="30">30</option><option value="50">50</option><option value="70">70</option></select></span>
       <span class="grp">Vol. min <input type="number" id="fvol" value="0" min="0" style="width:84px"></span>
       <button class="btn ghost" id="export">Exporter CSV</button>
     </div>
@@ -120,260 +125,278 @@
     <div class="tablewrap"><table><thead><tr id="head"></tr></thead><tbody id="body"></tbody></table></div>
   </div>
 
-  <!-- ===== VUE STATS ===== -->
+  <!-- STATS -->
   <div id="view-stats" style="display:none">
     <div class="controls" style="margin-bottom:16px">
-      <span class="grp">Filtrer les stats par tag
-        <select id="ftag2"><option value="">Tous les tags</option></select>
-      </span>
+      <span class="grp">Filtrer par tag <select id="ftag2"><option value="">Tous les tags</option></select></span>
       <span class="count" id="statscount" style="margin:0"></span>
     </div>
     <div class="grid">
-      <div class="panel">
-        <h3>Répartition des positions <small>(cliquez pour filtrer)</small></h3>
-        <div class="donutwrap">
-          <div class="donut" id="donut"><div class="center"><b id="donutN">0</b><span>positionnés</span></div></div>
-          <div class="legend" id="legend"></div>
-        </div>
-      </div>
-      <div class="panel">
-        <h3>Détail par tranche</h3>
-        <div class="bars" id="bucketbars"></div>
-      </div>
-      <div class="panel">
-        <h3>🎯 Quick wins — Top 11-20 <small>(à un pas de la 1<sup>re</sup> page)</small></h3>
-        <div class="scroll"><table class="qwtable" id="qw"></table></div>
-      </div>
-      <div class="panel">
-        <h3>Opportunités page 1 — Top 4-10 <small>(pousser vers le top 3)</small></h3>
-        <div class="scroll"><table class="qwtable" id="qw2"></table></div>
-      </div>
-      <div class="panel">
-        <h3>Répartition par intention</h3>
-        <div class="bars" id="intentbars"></div>
-      </div>
-      <div class="panel">
-        <h3>Top tags <small>(par nb de mots-clés)</small></h3>
-        <div class="bars" id="tagbars"></div>
-      </div>
+      <div class="panel"><h3>Répartition des positions <small>(cliquez pour filtrer)</small></h3>
+        <div class="donutwrap"><div class="donut" id="donut"><div class="center"><b id="donutN">0</b><span>positionnés</span></div></div><div class="legend" id="legend"></div></div></div>
+      <div class="panel"><h3>Détail par tranche</h3><div class="bars" id="bucketbars"></div></div>
+      <div class="panel"><h3>🎯 Quick wins — Top 11-20 <small>(triés par volume)</small></h3><div class="scroll"><table class="qwtable" id="qw"></table></div></div>
+      <div class="panel"><h3>Pages hub <small>(mots-clés portés par page)</small></h3><div class="scroll"><table class="qwtable" id="hub"></table></div></div>
+      <div class="panel"><h3>SERP features gagnées</h3><div class="bars" id="serpbars"></div>
+        <div class="scroll" style="margin-top:12px"><table class="qwtable" id="fsn"></table></div></div>
+      <div class="panel"><h3>Répartition par intention</h3><div class="bars" id="intentbars"></div></div>
+      <div class="panel"><h3>Top tags</h3><div class="bars" id="tagbars"></div></div>
     </div>
   </div>
 
-  <footer>Reporting SEO — Le Guide ANCV. Source : Suivi de position Semrush (Google France). Position, URL, type SERP, tags, volume, KD, intention.</footer>
+  <!-- PRIORITES -->
+  <div id="view-prio" style="display:none">
+    <div class="note">Croisement <b>position × volume × profil de liens de la page</b>. Objectif : identifier où agir en premier. Les mots-clés en <b>position 11-20</b> (à un pas de la 1ʳᵉ page) sont priorisés, avec le nb de backlinks de leur page pour orienter l'action (netlinking vs contenu).</div>
+    <div class="controls">
+      <span class="grp">Tranche <select id="pband"><option value="all">4-20 (toutes)</option><option value="1120">11-20</option><option value="410">4-10</option></select></span>
+      <span class="grp">Reco <select id="preco"><option value="">Toutes</option><option value="link">Netlinking</option><option value="mix">Netlinking + on-page</option><option value="content">Contenu/on-page</option></select></span>
+      <button class="btn ghost" id="exportPrio">Exporter CSV</button>
+      <span class="count" id="priocount" style="margin:0"></span>
+    </div>
+    <div class="tablewrap"><table><thead><tr id="priohead"></tr></thead><tbody id="priobody"></tbody></table></div>
+  </div>
+
+  <!-- NETLINKING -->
+  <div id="view-net" style="display:none">
+    <div class="kpis" id="netkpis"></div>
+    <div class="note warn" id="toxicnote" style="display:none"></div>
+    <div class="grid">
+      <div class="panel"><h3>Tendance backlinks <small>(ancv.com, 15 mois)</small></h3>
+        <div class="spark" id="sparkBl"></div><div class="trendmeta" id="sparkBlMeta"></div>
+        <h3 style="margin-top:18px">Domaines référents <small>(ancv.com)</small></h3>
+        <div class="spark" id="sparkRd"></div><div class="trendmeta" id="sparkRdMeta"></div></div>
+      <div class="panel"><h3>Top domaines référents <small>(par autorité)</small></h3>
+        <div class="scroll"><table class="qwtable" id="refd"></table></div></div>
+      <div class="panel full"><h3>Ancres de liens <small>(les plus fréquentes)</small></h3>
+        <div class="scroll"><table class="qwtable" id="anchors"></table></div></div>
+    </div>
+  </div>
+
+  <!-- MAILLAGE -->
+  <div id="view-mail" style="display:none">
+    <div class="kpis" id="mailkpis"></div>
+    <div class="note ok" id="mailok"></div>
+    <div class="grid">
+      <div class="panel"><h3>Maillage interne — contrôles <small>(vert = sain)</small></h3><div id="checks"></div></div>
+      <div class="panel"><h3>Problèmes on-page / technique <small>(à traiter)</small></h3><div class="bars" id="issuebars"></div></div>
+      <div class="panel full"><h3>⚠️ Pages en erreur 4xx <small>(fiches partenaires cassées — rediriger / nettoyer les liens internes)</small></h3>
+        <div class="scroll"><table class="qwtable" id="fourxx"></table></div></div>
+    </div>
+  </div>
+
+  <footer id="foot">Cockpit SEO — Le Guide ANCV. Sources : Suivi de position, Backlink Analytics et Site Audit Semrush (Google France).</footer>
 </div>
 
 <script>
-let DATA=[];
-let view="table";
-let rangeFilter=null;      // {min,max,label} déclenché depuis les stats
+let DATA=[],NL={},AU={},PAGEBL={};
+let view="table",rangeFilter=null,sortKey="vol",sortDir=-1;
+let pSortKey="score",pSortDir=-1;
 const cols=[
-  {key:"kw",label:"Mot-clé",type:"str"},
-  {key:"vol",label:"Volume",type:"num"},
-  {key:"kd",label:"KD %",type:"num"},
-  {key:"intent",label:"Intention",type:"str"},
-  {key:"pos",label:"Position",type:"num"},
-  {key:"diff",label:"Évolution",type:"num"},
-  {key:"type",label:"Type SERP",type:"str"},
-  {key:"tags",label:"Tags",type:"str"},
-  {key:"url",label:"URL positionnée",type:"str"},
+  {key:"kw",label:"Mot-clé",type:"str"},{key:"vol",label:"Volume",type:"num"},{key:"kd",label:"KD %",type:"num"},
+  {key:"intent",label:"Intention",type:"str"},{key:"pos",label:"Position",type:"num"},{key:"diff",label:"Évolution",type:"num"},
+  {key:"type",label:"Type SERP",type:"str"},{key:"tags",label:"Tags",type:"str"},{key:"url",label:"URL positionnée",type:"str"},
 ];
-let sortKey="vol",sortDir=-1;
+const pcols=[
+  {key:"kw",label:"Mot-clé",type:"str"},{key:"pos",label:"Position",type:"num"},{key:"vol",label:"Volume",type:"num"},
+  {key:"kd",label:"KD",type:"num"},{key:"bl",label:"Backlinks page",type:"num"},{key:"rd",label:"Dom. réf.",type:"num"},
+  {key:"score",label:"Score",type:"num"},{key:"reco",label:"Reco",type:"str"},{key:"url",label:"URL",type:"str"},
+];
 const BUCKETS=[
-  {key:"t3",label:"Top 3",min:1,max:3,color:"var(--b1)"},
-  {key:"t10",label:"Top 4-10",min:4,max:10,color:"var(--b2)"},
-  {key:"t20",label:"Top 11-20",min:11,max:20,color:"var(--b3)"},
-  {key:"t50",label:"Top 21-50",min:21,max:50,color:"var(--b4)"},
-  {key:"t100",label:"Top 51-100",min:51,max:100,color:"var(--b5)"},
-  {key:"na",label:"Hors top 100",min:null,max:null,color:"var(--b6)"},
+  {key:"t3",label:"Top 3",min:1,max:3,color:"var(--b1)"},{key:"t10",label:"Top 4-10",min:4,max:10,color:"var(--b2)"},
+  {key:"t20",label:"Top 11-20",min:11,max:20,color:"var(--b3)"},{key:"t50",label:"Top 21-50",min:21,max:50,color:"var(--b4)"},
+  {key:"t100",label:"Top 51-100",min:51,max:100,color:"var(--b5)"},{key:"na",label:"Hors top 100",min:null,max:null,color:"var(--b6)"},
 ];
 const fmt=n=>n==null?"—":n.toLocaleString("fr-FR");
 const kdClass=k=>k==null?"na":(k<=30?"easy":(k<=50?"med":"hard"));
-function evoCell(d){if(d==null)return '<span class="evo flat">—</span>';
-  if(d>0)return `<span class="evo up">▲ ${d}</span>`;if(d<0)return `<span class="evo down">▼ ${Math.abs(d)}</span>`;
-  return '<span class="evo flat">–</span>';}
+const g=id=>document.getElementById(id);
+const tagList=r=>(r.tags||"").split("|").map(t=>t.trim()).filter(Boolean);
+const normUrl=u=>(u||"").replace(/^https?:\/\//,"").split("?")[0].replace(/\/$/,"").toLowerCase();
+function evoCell(d){if(d==null)return '<span class="evo flat">—</span>';if(d>0)return `<span class="evo up">▲ ${d}</span>`;if(d<0)return `<span class="evo down">▼ ${Math.abs(d)}</span>`;return '<span class="evo flat">–</span>';}
 function shortUrl(u){return u?u.replace(/^https?:\/\//,"").replace(/\/$/,""):"—";}
-function g(id){return document.getElementById(id);}
-function tagList(r){return (r.tags||"").split("|").map(t=>t.trim()).filter(Boolean);}
+function pageBL(u){return PAGEBL[normUrl(u)]||{bl:0,rd:0};}
 
+/* ---------- MOTS-CLES ---------- */
 function filtered(){
-  const q=g("q").value.toLowerCase().trim(),tag=g("ftag").value,st=g("fstatus").value,
-    fpos=+g("fpos").value,fkd=+g("fkd").value,fvol=+g("fvol").value||0;
+  const q=g("q").value.toLowerCase().trim(),tag=g("ftag").value,st=g("fstatus").value,fpos=+g("fpos").value,fkd=+g("fkd").value,fvol=+g("fvol").value||0;
   return DATA.filter(r=>{
-    if(rangeFilter){
-      if(rangeFilter.min==null){ if(r.pos!=null) return false; }
-      else if(r.pos==null||r.pos<rangeFilter.min||r.pos>rangeFilter.max) return false;
-    }
-    if(tag && !tagList(r).includes(tag))return false;
-    if(st==="ranked"&&r.pos==null)return false;
-    if(st==="notranked"&&r.pos!=null)return false;
-    if(fpos&&(r.pos==null||r.pos>fpos))return false;
-    if(fkd&&(r.kd==null||r.kd>fkd))return false;
+    if(rangeFilter){if(rangeFilter.min==null){if(r.pos!=null)return false;}else if(r.pos==null||r.pos<rangeFilter.min||r.pos>rangeFilter.max)return false;}
+    if(tag&&!tagList(r).includes(tag))return false;
+    if(st==="ranked"&&r.pos==null)return false; if(st==="notranked"&&r.pos!=null)return false;
+    if(fpos&&(r.pos==null||r.pos>fpos))return false; if(fkd&&(r.kd==null||r.kd>fkd))return false;
     if(r.vol<fvol)return false;
     if(q&&!((r.kw+" "+(r.tags||"")+" "+(r.url||"")).toLowerCase().includes(q)))return false;
-    return true;
-  });
+    return true;});
 }
-// stats respectent seulement le filtre tag dédié (ftag2)
-function statsRows(){
-  const tag=g("ftag2").value;
-  return tag?DATA.filter(r=>tagList(r).includes(tag)):DATA.slice();
-}
-
-/* ---------- TABLE ---------- */
-function sorted(rows){
-  const c=cols.find(c=>c.key===sortKey)||{type:"num"};
-  return rows.slice().sort((a,b)=>{let x=a[sortKey],y=b[sortKey];
-    if(x==null)x=c.type==="num"?1e12:"";if(y==null)y=c.type==="num"?1e12:"";
-    if(c.type==="num")return (x-y)*sortDir;return (""+x).localeCompare(""+y,"fr")*sortDir;});
+function sortRows(rows,key,dir,list){
+  const c=list.find(c=>c.key===key)||{type:"num"};
+  return rows.slice().sort((a,b)=>{let x=a[key],y=b[key];if(x==null)x=c.type==="num"?1e12:"";if(y==null)y=c.type==="num"?1e12:"";
+    if(c.type==="num")return (x-y)*dir;return (""+x).localeCompare(""+y,"fr")*dir;});
 }
 function renderHead(){
   g("head").innerHTML=cols.map(c=>{const a=c.key===sortKey?(sortDir<0?"▼":"▲"):"";
     const cl=(c.key==="url"?"url":"")+(c.key==="intent"?" intent":"")+(c.key==="tags"?" tags":"")+(c.key==="type"?" type":"");
     return `<th data-k="${c.key}" class="${cl}">${c.label} <span class="arrow">${a}</span></th>`;}).join("");
-  document.querySelectorAll("#head th").forEach(th=>{th.onclick=()=>{const k=th.dataset.k;
-    if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=(k==="kw"||k==="url"||k==="intent"||k==="tags"||k==="type")?1:-1;}renderTable();};});
+  document.querySelectorAll("#head th").forEach(th=>{th.onclick=()=>{const k=th.dataset.k;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=(k==="kw"||k==="url"||k==="intent"||k==="tags"||k==="type")?1:-1;}renderTable();};});
 }
 function renderTable(){
-  renderHead();
-  const rows=sorted(filtered());
-  g("body").innerHTML=rows.map(r=>`
-    <tr><td class="kw">${r.kw}</td>
-      <td class="num">${fmt(r.vol)}</td>
-      <td class="num">${r.kd==null?'<span class="kd na">n/d</span>':`<span class="kd ${kdClass(r.kd)}">${r.kd}</span>`}</td>
-      <td class="intent">${r.intent?`<span class="chip">${r.intent}</span>`:"—"}</td>
-      <td class="num">${r.pos==null?'<span class="pos na">n/p</span>':`<span class="pos ${r.pos<=3?'top3':''}">${r.pos}</span>`}</td>
-      <td class="num">${evoCell(r.diff)}</td>
-      <td class="type">${r.type?`<span class="chip">${r.type}</span>`:"—"}</td>
-      <td class="tags">${tagList(r).map(t=>`<span class="tag">${t}</span>`).join(" ")||"—"}</td>
-      <td class="url">${r.url?`<a href="${r.url}" target="_blank" rel="noopener">${shortUrl(r.url)}</a>`:"—"}</td>
-    </tr>`).join("");
-  g("count").textContent=`${rows.length} mot(s)-clé(s) affiché(s) sur ${DATA.length}`;
-  // bandeau filtre actif (depuis stats)
+  renderHead();const rows=sortRows(filtered(),sortKey,sortDir,cols);
+  g("body").innerHTML=rows.map(r=>`<tr><td class="kw">${r.kw}</td><td class="num">${fmt(r.vol)}</td>
+    <td class="num">${r.kd==null?'<span class="kd na">n/d</span>':`<span class="kd ${kdClass(r.kd)}">${r.kd}</span>`}</td>
+    <td class="intent">${r.intent?`<span class="chip">${r.intent}</span>`:"—"}</td>
+    <td class="num">${r.pos==null?'<span class="pos na">n/p</span>':`<span class="pos ${r.pos<=3?'top3':''}">${r.pos}</span>`}</td>
+    <td class="num">${evoCell(r.diff)}</td><td class="type">${r.type?`<span class="chip">${r.type}</span>`:"—"}</td>
+    <td class="tags">${tagList(r).map(t=>`<span class="tag">${t}</span>`).join(" ")||"—"}</td>
+    <td class="url">${r.url?`<a href="${r.url}" target="_blank" rel="noopener">${shortUrl(r.url)}</a>`:"—"}</td></tr>`).join("");
+  g("count").textContent=`${rows.length} mot(s)-clé(s) sur ${DATA.length}`;
   const af=g("activefilter");
-  if(rangeFilter){af.style.display="flex";af.innerHTML=`Filtre position : <b>${rangeFilter.label}</b> <span class="x" id="clrRange">✕ effacer</span>`;
-    g("clrRange").onclick=()=>{rangeFilter=null;renderTable();};}
+  if(rangeFilter){af.style.display="flex";af.innerHTML=`Filtre position : <b>${rangeFilter.label}</b> <span class="x" id="clrRange">✕ effacer</span>`;g("clrRange").onclick=()=>{rangeFilter=null;renderTable();};}
   else af.style.display="none";
   renderKpis(filtered());
 }
 function renderKpis(rows){
-  const ranked=rows.filter(r=>r.pos!=null);
-  const t3=ranked.filter(r=>r.pos<=3).length,t10=ranked.filter(r=>r.pos<=10).length;
-  const t1120=ranked.filter(r=>r.pos>=11&&r.pos<=20).length;
-  const vol=rows.reduce((s,r)=>s+r.vol,0);
-  const avg=ranked.length?(ranked.reduce((s,r)=>s+r.pos,0)/ranked.length):null;
-  const k=[["Mots-clés",fmt(rows.length)],["Positionnés",fmt(ranked.length)],["Top 3",fmt(t3)],
-    ["Top 10",fmt(t10)],["Top 11-20",fmt(t1120)],["Pos. moy.",avg==null?"—":avg.toFixed(1)],["Volume cumulé",fmt(vol)]];
+  const ranked=rows.filter(r=>r.pos!=null),t3=ranked.filter(r=>r.pos<=3).length,t10=ranked.filter(r=>r.pos<=10).length,
+    t1120=ranked.filter(r=>r.pos>=11&&r.pos<=20).length,vol=rows.reduce((s,r)=>s+r.vol,0),
+    avg=ranked.length?(ranked.reduce((s,r)=>s+r.pos,0)/ranked.length):null;
+  const k=[["Mots-clés",fmt(rows.length)],["Positionnés",fmt(ranked.length)],["Top 3",fmt(t3)],["Top 10",fmt(t10)],["Top 11-20",fmt(t1120)],["Pos. moy.",avg==null?"—":avg.toFixed(1)],["Volume cumulé",fmt(vol)]];
   g("kpis").innerHTML=k.map(([l,v])=>`<div class="kpi"><div class="lbl">${l}</div><div class="val">${v}</div></div>`).join("");
 }
-function exportCSV(){
-  const rows=sorted(filtered());
-  const head=["Mot-cle","Volume","KD","Intention","Position","Evolution","Type SERP","Tags","URL"];
-  const lines=[head.join(";")].concat(rows.map(r=>
-    [r.kw,r.vol,r.kd==null?"":r.kd,r.intent,r.pos==null?"":r.pos,r.diff==null?"":r.diff,r.type||"",r.tags||"",r.url]
-    .map(v=>`"${(""+v).replace(/"/g,'""')}"`).join(";")));
+function exportRows(rows,headArr,mapFn,name){
+  const lines=[headArr.join(";")].concat(rows.map(r=>mapFn(r).map(v=>`"${(""+v).replace(/"/g,'""')}"`).join(";")));
   const blob=new Blob(["﻿"+lines.join("\n")],{type:"text/csv;charset=utf-8"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="suivi_leguide_ancv.csv";a.click();
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();
 }
 
 /* ---------- STATS ---------- */
-function bucketOf(pos){
-  if(pos==null)return "na";
-  for(const b of BUCKETS){if(b.min!=null&&pos>=b.min&&pos<=b.max)return b.key;}
-  return "na";
-}
-function renderStats(){
-  const rows=statsRows();
-  g("statscount").textContent=`${rows.length} mots-clés analysés`;
-  const counts={};BUCKETS.forEach(b=>counts[b.key]=0);
-  rows.forEach(r=>counts[bucketOf(r.pos)]++);
-  const ranked=rows.filter(r=>r.pos!=null).length;
-  // donut (conic-gradient) sur les positionnés
-  let acc=0,stops=[];
-  const rankedBuckets=BUCKETS.filter(b=>b.key!=="na");
-  rankedBuckets.forEach(b=>{const n=counts[b.key];const frac=ranked?n/ranked:0;
-    const a=acc*360,z=(acc+frac)*360;stops.push(`${b.color} ${a}deg ${z}deg`);acc+=frac;});
-  if(!ranked)stops=["var(--b6) 0deg 360deg"];
-  g("donut").style.background=`conic-gradient(${stops.join(",")})`;
-  g("donutN").textContent=fmt(ranked);
-  // legend (tous les buckets)
-  g("legend").innerHTML=BUCKETS.map(b=>{const n=counts[b.key];const pct=rows.length?Math.round(n/rows.length*100):0;
-    return `<div class="row" data-b="${b.key}"><span class="sw" style="background:${b.color}"></span>${b.label}
-      <span class="n">${fmt(n)} · ${pct}%</span></div>`;}).join("");
-  document.querySelectorAll("#legend .row").forEach(el=>el.onclick=()=>jumpBucket(el.dataset.b));
-  // bars détail
-  const max=Math.max(1,...BUCKETS.map(b=>counts[b.key]));
-  g("bucketbars").innerHTML=BUCKETS.map(b=>{const n=counts[b.key];
-    return `<div class="bar"><span class="lab" data-b="${b.key}">${b.label}</span>
-      <div class="track"><div class="fill" style="width:${n/max*100}%;background:${b.color}"></div></div>
-      <span class="v">${fmt(n)}</span></div>`;}).join("");
-  document.querySelectorAll("#bucketbars .lab").forEach(el=>el.onclick=()=>jumpBucket(el.dataset.b));
-  // quick wins 11-20 & 4-10
-  qwTable("qw",rows.filter(r=>r.pos>=11&&r.pos<=20));
-  qwTable("qw2",rows.filter(r=>r.pos>=4&&r.pos<=10));
-  // intentions
-  const im={};rows.forEach(r=>{(r.intent||"—").split(", ").forEach(x=>{x=x||"—";im[x]=(im[x]||0)+1;});});
-  barPanel("intentbars",im,"var(--brand)");
-  // tags
-  const tm={};rows.forEach(r=>tagList(r).forEach(t=>tm[t]=(tm[t]||0)+1));
-  barPanel("tagbars",tm,"#6a8fd0",12);
-}
-function qwTable(id,rows){
+function statsRows(){const tag=g("ftag2").value;return tag?DATA.filter(r=>tagList(r).includes(tag)):DATA.slice();}
+function bucketOf(pos){if(pos==null)return "na";for(const b of BUCKETS){if(b.min!=null&&pos>=b.min&&pos<=b.max)return b.key;}return "na";}
+function qwTable(id,rows,extraCol){
   rows=rows.slice().sort((a,b)=>b.vol-a.vol);
-  const head=`<tr><th>Mot-clé</th><th>Pos.</th><th style="text-align:right">Volume</th><th>KD</th><th>URL</th></tr>`;
-  const body=rows.map(r=>`<tr><td>${r.kw}</td><td><span class="pos">${r.pos}</span></td>
-    <td class="n">${fmt(r.vol)}</td><td>${r.kd==null?"—":r.kd}</td>
-    <td>${r.url?`<a href="${r.url}" target="_blank" rel="noopener">${shortUrl(r.url).slice(0,38)}</a>`:"—"}</td></tr>`).join("");
-  g(id).innerHTML=head+(body||`<tr><td colspan="5" style="color:var(--muted)">Aucun mot-clé dans cette tranche.</td></tr>`);
+  const head=`<tr><th>Mot-clé</th><th>Pos.</th><th style="text-align:right">Volume</th><th>URL</th></tr>`;
+  const body=rows.map(r=>`<tr><td>${r.kw}</td><td><span class="pos ${r.pos<=3?'top3':''}">${r.pos}</span></td><td class="n">${fmt(r.vol)}</td>
+    <td>${r.url?`<a href="${r.url}" target="_blank" rel="noopener">${shortUrl(r.url).slice(0,34)}</a>`:"—"}</td></tr>`).join("");
+  g(id).innerHTML=head+(body||`<tr><td colspan="4" style="color:var(--muted)">Aucun.</td></tr>`);
 }
 function barPanel(id,map,color,limit){
-  let items=Object.entries(map).sort((a,b)=>b[1]-a[1]);
-  if(limit)items=items.slice(0,limit);
+  let items=Object.entries(map).sort((a,b)=>b[1]-a[1]);if(limit)items=items.slice(0,limit);
   const max=Math.max(1,...items.map(x=>x[1]));
-  g(id).innerHTML=items.map(([k,n])=>`<div class="bar"><span class="lab" title="${k}">${k}</span>
-    <div class="track"><div class="fill" style="width:${n/max*100}%;background:${color}"></div></div>
-    <span class="v">${fmt(n)}</span></div>`).join("")||'<span style="color:var(--muted)">—</span>';
+  g(id).innerHTML=items.map(([k,n])=>`<div class="bar"><span class="lab" title="${k}">${k}</span><div class="track"><div class="fill" style="width:${n/max*100}%;background:${color}"></div></div><span class="v">${fmt(n)}</span></div>`).join("")||'<span style="color:var(--muted)">—</span>';
 }
-function jumpBucket(bkey){
-  const b=BUCKETS.find(x=>x.key===bkey);if(!b)return;
-  rangeFilter={min:b.min,max:b.max,label:b.label};
-  // reset des filtres position/statut pour éviter conflit
-  g("fpos").value="0";g("fstatus").value="all";
-  setView("table");renderTable();
-  window.scrollTo({top:0,behavior:"smooth"});
+function renderStats(){
+  const rows=statsRows();g("statscount").textContent=`${rows.length} mots-clés analysés`;
+  const counts={};BUCKETS.forEach(b=>counts[b.key]=0);rows.forEach(r=>counts[bucketOf(r.pos)]++);
+  const ranked=rows.filter(r=>r.pos!=null).length;
+  let acc=0,stops=[];BUCKETS.filter(b=>b.key!=="na").forEach(b=>{const frac=ranked?counts[b.key]/ranked:0;stops.push(`${b.color} ${acc*360}deg ${(acc+frac)*360}deg`);acc+=frac;});
+  if(!ranked)stops=["var(--b6) 0deg 360deg"];
+  g("donut").style.background=`conic-gradient(${stops.join(",")})`;g("donutN").textContent=fmt(ranked);
+  g("legend").innerHTML=BUCKETS.map(b=>{const n=counts[b.key],pct=rows.length?Math.round(n/rows.length*100):0;return `<div class="row" data-b="${b.key}"><span class="sw" style="background:${b.color}"></span>${b.label}<span class="n">${fmt(n)} · ${pct}%</span></div>`;}).join("");
+  document.querySelectorAll("#legend .row").forEach(el=>el.onclick=()=>jumpBucket(el.dataset.b));
+  const max=Math.max(1,...BUCKETS.map(b=>counts[b.key]));
+  g("bucketbars").innerHTML=BUCKETS.map(b=>`<div class="bar"><span class="lab" data-b="${b.key}">${b.label}</span><div class="track"><div class="fill" style="width:${counts[b.key]/max*100}%;background:${b.color}"></div></div><span class="v">${fmt(counts[b.key])}</span></div>`).join("");
+  document.querySelectorAll("#bucketbars .lab").forEach(el=>el.onclick=()=>jumpBucket(el.dataset.b));
+  qwTable("qw",rows.filter(r=>r.pos>=11&&r.pos<=20));
+  // pages hub
+  const hub={};rows.forEach(r=>{if(r.pos!=null&&r.url){const u=r.url;hub[u]=hub[u]||{n:0,vol:0};hub[u].n++;hub[u].vol+=r.vol;}});
+  const hubArr=Object.entries(hub).sort((a,b)=>b[1].n-a[1].n).slice(0,25);
+  g("hub").innerHTML=`<tr><th>URL</th><th style="text-align:right">Mots-clés</th><th style="text-align:right">Vol. cumulé</th></tr>`+
+    hubArr.map(([u,o])=>`<tr><td><a href="${u}" target="_blank" rel="noopener">${shortUrl(u).slice(0,40)}</a></td><td class="n">${o.n}</td><td class="n">${fmt(o.vol)}</td></tr>`).join("");
+  // serp features
+  const sf={};rows.forEach(r=>{const t=r.type||"—";if(r.pos!=null){sf[t]=(sf[t]||0)+1;}});barPanel("serpbars",sf,"#6a8fd0");
+  qwTable("fsn",rows.filter(r=>/snippet/i.test(r.type||"")));
+  const im={};rows.forEach(r=>{(r.intent||"—").split(", ").forEach(x=>{x=x||"—";im[x]=(im[x]||0)+1;});});barPanel("intentbars",im,"var(--brand)");
+  const tm={};rows.forEach(r=>tagList(r).forEach(t=>tm[t]=(tm[t]||0)+1));barPanel("tagbars",tm,"#6a8fd0",12);
+}
+function jumpBucket(bkey){const b=BUCKETS.find(x=>x.key===bkey);if(!b)return;rangeFilter={min:b.min,max:b.max,label:b.label};g("fpos").value="0";g("fstatus").value="all";setView("table");renderTable();window.scrollTo({top:0,behavior:"smooth"});}
+
+/* ---------- PRIORITES ---------- */
+function prioData(){
+  const band=g("pband").value,reco=g("preco").value;
+  let rows=DATA.filter(r=>r.pos!=null&&r.pos>=4&&r.pos<=20).map(r=>{
+    const p=pageBL(r.url),posF=r.pos>=11?1.4:1.0;
+    const score=Math.round(r.vol*posF/Math.log10((p.bl||0)+20));
+    let rc,rl; if(p.bl<10){rc="Netlinking prioritaire";rl="link";}else if(p.bl<100){rc="Netlinking + on-page";rl="mix";}else{rc="Contenu / on-page";rl="content";}
+    return {kw:r.kw,pos:r.pos,vol:r.vol,kd:r.kd,bl:p.bl,rd:p.rd,url:r.url,score,reco:rc,rl};
+  });
+  if(band==="1120")rows=rows.filter(r=>r.pos>=11&&r.pos<=20);
+  if(band==="410")rows=rows.filter(r=>r.pos>=4&&r.pos<=10);
+  if(reco)rows=rows.filter(r=>r.rl===reco);
+  return rows;
+}
+function renderPrio(){
+  const rows=sortRows(prioData(),pSortKey,pSortDir,pcols);
+  g("priohead").innerHTML=pcols.map(c=>{const a=c.key===pSortKey?(pSortDir<0?"▼":"▲"):"";return `<th data-k="${c.key}">${c.label} <span class="arrow">${a}</span></th>`;}).join("");
+  document.querySelectorAll("#priohead th").forEach(th=>{th.onclick=()=>{const k=th.dataset.k;if(pSortKey===k)pSortDir*=-1;else{pSortKey=k;pSortDir=(k==="kw"||k==="url"||k==="reco")?1:-1;}renderPrio();};});
+  g("priobody").innerHTML=rows.map(r=>`<tr><td class="kw">${r.kw}</td>
+    <td class="num"><span class="pos ${r.pos<=3?'top3':''}">${r.pos}</span></td><td class="num">${fmt(r.vol)}</td>
+    <td class="num">${r.kd==null?"—":r.kd}</td><td class="num">${fmt(r.bl)}</td><td class="num">${fmt(r.rd)}</td>
+    <td class="num"><b>${fmt(r.score)}</b></td><td><span class="reco ${r.rl}">${r.reco}</span></td>
+    <td class="url">${r.url?`<a href="${r.url}" target="_blank" rel="noopener">${shortUrl(r.url).slice(0,36)}</a>`:"—"}</td></tr>`).join("");
+  g("priocount").textContent=`${rows.length} opportunités`;
+}
+
+/* ---------- NETLINKING ---------- */
+function spark(id,metaId,vals,labels){
+  const max=Math.max(...vals),min=Math.min(...vals);
+  g(id).innerHTML=vals.map((v,i)=>{const h=6+(v-min)/(max-min||1)*54;return `<div class="b ${i===vals.length-1?'last':''}" style="height:${h}px" title="${labels[i]}: ${fmt(v)}"></div>`;}).join("");
+  g(metaId).innerHTML=`<span>${labels[0]} · ${fmt(vals[0])}</span><span>${labels[vals.length-1]} · ${fmt(vals[vals.length-1])}</span>`;
+}
+function renderNet(){
+  const ov=NL.overview["leguide.ancv.com"],pct=Math.round(ov.follow/(ov.follow+ov.nofollow)*100);
+  const k=[["Authority Score",ov.ascore,""],["Backlinks",fmt(ov.backlinks),""],["Domaines réf.",fmt(ov.refdomains),""],
+    ["Liens follow",pct+"%","g"],["Backlinks toxiques",fmt(NL.toxic_backlinks),"r"]];
+  g("netkpis").innerHTML=k.map(([l,v,c])=>`<div class="kpi"><div class="lbl">${l}</div><div class="val ${c}">${v}</div></div>`).join("");
+  const toxA=NL.anchors.filter(a=>a.toxic);
+  if(toxA.length){g("toxicnote").style.display="block";g("toxicnote").innerHTML=`<b>⚠️ Ancres toxiques détectées</b> — ${toxA.length} ancres de type spam SEO (ex. « ${toxA[0].anchor.slice(0,40)}… ») cumulant ~${fmt(NL.toxic_backlinks)} backlinks. À envisager en désaveu (disavow).`;}
+  spark("sparkBl","sparkBlMeta",NL.historical.map(h=>h.backlinks),NL.historical.map(h=>h.date));
+  spark("sparkRd","sparkRdMeta",NL.historical.map(h=>h.refdomains),NL.historical.map(h=>h.date));
+  g("refd").innerHTML=`<tr><th>Domaine</th><th>AS</th><th style="text-align:right">Backlinks</th><th>Pays</th></tr>`+
+    NL.refdomains.map(d=>`<tr><td>${d.domain}</td><td><span class="kd ${d.ascore>=70?'easy':d.ascore>=40?'med':'hard'}">${d.ascore}</span></td><td class="n">${fmt(d.backlinks)}</td><td>${(d.country||"").toUpperCase()}</td></tr>`).join("");
+  g("anchors").innerHTML=`<tr><th>Ancre</th><th style="text-align:right">Domaines</th><th style="text-align:right">Backlinks</th></tr>`+
+    NL.anchors.map(a=>`<tr><td style="${a.toxic?'color:var(--down);font-weight:600':''}">${a.toxic?'⚠️ ':''}${a.anchor}</td><td class="n">${fmt(a.domains)}</td><td class="n">${fmt(a.backlinks)}</td></tr>`).join("");
+}
+
+/* ---------- MAILLAGE ---------- */
+function renderMail(){
+  const k=[["Score de santé",AU.score+"/100",AU.score>=80?"g":""],["Pages crawlées",fmt(AU.pages_crawled),""],
+    ["Pages 4xx",fmt(AU.errors_4xx.length),"r"],["Contrôles maillage OK",AU.internal_checks.filter(c=>c.count===0).length+"/"+AU.internal_checks.length,"g"]];
+  g("mailkpis").innerHTML=k.map(([l,v,c])=>`<div class="kpi"><div class="lbl">${l}</div><div class="val ${c}">${v}</div></div>`).join("");
+  g("mailok").innerHTML=`<b>Maillage interne sain.</b> Sur les ${AU.pages_crawled} pages crawlées (audit du ${AU.audit_date}) : aucune page orpheline, aucune page sous-maillée, aucun lien interne cassé, profondeur de clic maîtrisée. L'effort doit porter sur le netlinking et l'on-page.`;
+  g("checks").innerHTML=AU.internal_checks.map(c=>`<div class="check"><span class="ic ${c.count===0?'ok':'ko'}">${c.count===0?'✓':'!'}</span>${c.title}<span class="n">${c.count}</span></div>`).join("");
+  const max=Math.max(...AU.issues.map(i=>i.count));
+  g("issuebars").innerHTML=AU.issues.map(i=>`<div class="bar"><span class="lab"><span class="sev ${i.sev}"></span>${i.title}</span><div class="track"><div class="fill" style="width:${i.count/max*100}%;background:${i.sev==='error'?'var(--err)':i.sev==='warning'?'var(--warn)':'var(--notice)'}"></div></div><span class="v">${fmt(i.count)}</span></div>`).join("");
+  g("fourxx").innerHTML=`<tr><th>Page en erreur 4xx</th></tr>`+AU.errors_4xx.map(u=>`<tr><td><a href="${u}" target="_blank" rel="noopener">${shortUrl(u)}</a></td></tr>`).join("");
 }
 
 /* ---------- VIEW SWITCH ---------- */
 function setView(v){
-  view=v;
-  g("view-table").style.display=v==="table"?"":"none";
-  g("view-stats").style.display=v==="stats"?"":"none";
-  g("tab-table").classList.toggle("active",v==="table");
-  g("tab-stats").classList.toggle("active",v==="stats");
-  if(v==="stats")renderStats();else renderTable();
+  view=v;["table","stats","prio","net","mail"].forEach(x=>{g("view-"+x).style.display=v===x?"":"none";g("tab-"+x).classList.toggle("active",v===x);});
+  g("kpis").style.display=(v==="table"||v==="stats")?"":"none";
+  g("note").style.display=(v==="table"&&noteHtml)?"block":"none";
+  if(v==="table")renderTable();else if(v==="stats")renderStats();else if(v==="prio")renderPrio();else if(v==="net")renderNet();else if(v==="mail")renderMail();
 }
-g("tab-table").onclick=()=>setView("table");
-g("tab-stats").onclick=()=>setView("stats");
+["table","stats","prio","net","mail"].forEach(v=>g("tab-"+v).onclick=()=>setView(v));
 ["q","ftag","fstatus","fpos","fkd","fvol"].forEach(id=>g(id).addEventListener("input",()=>{rangeFilter=null;renderTable();}));
 g("ftag2").addEventListener("input",renderStats);
-g("export").addEventListener("click",exportCSV);
+g("pband").addEventListener("input",renderPrio);g("preco").addEventListener("input",renderPrio);
+g("export").addEventListener("click",()=>exportRows(sortRows(filtered(),sortKey,sortDir,cols),["Mot-cle","Volume","KD","Intention","Position","Evolution","Type","Tags","URL"],r=>[r.kw,r.vol,r.kd??"",r.intent,r.pos??"",r.diff??"",r.type||"",r.tags||"",r.url],"suivi_leguide_ancv.csv"));
+g("exportPrio").addEventListener("click",()=>exportRows(sortRows(prioData(),pSortKey,pSortDir,pcols),["Mot-cle","Position","Volume","KD","Backlinks_page","Domaines_ref","Score","Reco","URL"],r=>[r.kw,r.pos,r.vol,r.kd??"",r.bl,r.rd,r.score,r.reco,r.url],"priorites_leguide_ancv.csv"));
 
-function initTags(){
-  const set=new Set();DATA.forEach(r=>tagList(r).forEach(t=>set.add(t)));
+let noteHtml="";
+function initTags(){const set=new Set();DATA.forEach(r=>tagList(r).forEach(t=>set.add(t)));
   const opts=[...set].sort((a,b)=>a.localeCompare(b,"fr")).map(t=>`<option value="${t}">${t}</option>`).join("");
-  g("ftag").innerHTML='<option value="">Tous</option>'+opts;
-  g("ftag2").innerHTML='<option value="">Tous les tags</option>'+opts;
-}
+  g("ftag").innerHTML='<option value="">Tous</option>'+opts;g("ftag2").innerHTML='<option value="">Tous les tags</option>'+opts;}
+function fetchJson(n){return fetch("./"+n+"?v="+Date.now()).then(r=>r.json());}
+var EMBEDDED=null; /* __EMBED_POINT__ */
+function loadAll(){return EMBEDDED?Promise.resolve(EMBEDDED):Promise.all([fetchJson("data.json"),fetchJson("netlinking.json"),fetchJson("audit.json")]);}
 
-fetch("./data.json?v="+Date.now()).then(r=>r.json()).then(p=>{
-  DATA=p.rows||[];
-  const per=p.period?(" &middot; relevé "+p.period.split(" - ")[0]):"";
-  g("sub").innerHTML=`Campagne de suivi Semrush &middot; Google France${per} &middot; Mise à jour du ${p.generated||"—"}`;
-  if(p.ranked!=null && p.ranked < (p.count||0)){
-    const n=g("note");n.style.display="block";
-    n.innerHTML=`<b>${p.ranked}/${p.count} mots-clés positionnés</b> dans le top 100 &middot; « n/p » = hors top 100 &middot; Données : export du Suivi de position Semrush.`;
-  }
-  initTags();renderTable();
-}).catch(e=>{g("count").textContent="Erreur de chargement de data.json : "+e;});
+loadAll().then(([p,nl,au])=>{
+  DATA=p.rows||[];NL=nl||{};AU=au||{};
+  PAGEBL={};Object.entries((NL.pages)||{}).forEach(([u,o])=>{PAGEBL[normUrl(u)]=o;});
+  const per=p.period?(" · relevé "+p.period.split(" - ")[0]):"";
+  g("sub").innerHTML=`Suivi de position · Netlinking · Maillage · Semrush · Google France${per}`;
+  if(p.ranked!=null&&p.ranked<(p.count||0))noteHtml=`<b>${p.ranked}/${p.count} mots-clés positionnés</b> dans le top 100 · « n/p » = hors top 100 · Données : export du Suivi de position Semrush.`;
+  g("note").innerHTML=noteHtml;
+  initTags();setView("table");
+}).catch(e=>{g("count").textContent="Erreur de chargement : "+e;});
 </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 # Configuration Netlify — régénère data.json depuis l'export Semrush au déploiement.
 [build]
   publish = "."
-  command = "python3 scripts/build_from_csv.py"
+  command = "python3 scripts/build_from_csv.py && python3 scripts/build_extras.py"
 
 [[headers]]
   for = "/data.json"

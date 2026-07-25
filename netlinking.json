@@ -1,0 +1,744 @@
+{
+ "generated": "2026-07-24 23:24 UTC",
+ "domain": "leguide.ancv.com",
+ "overview": {
+  "leguide.ancv.com": {
+   "ascore": 53,
+   "backlinks": 66373,
+   "refdomains": 2686,
+   "follow": 51976,
+   "nofollow": 14215,
+   "text": 40426,
+   "image": 14735
+  },
+  "ancv.com": {
+   "ascore": 53,
+   "backlinks": 6221320,
+   "refdomains": 7328,
+   "follow": 3824096,
+   "nofollow": 2397677
+  }
+ },
+ "historical": [
+  {
+   "date": "2025-05",
+   "backlinks": 7700369,
+   "refdomains": 6989
+  },
+  {
+   "date": "2025-06",
+   "backlinks": 7461347,
+   "refdomains": 7014
+  },
+  {
+   "date": "2025-07",
+   "backlinks": 7488701,
+   "refdomains": 7008
+  },
+  {
+   "date": "2025-08",
+   "backlinks": 7474106,
+   "refdomains": 7018
+  },
+  {
+   "date": "2025-09",
+   "backlinks": 7442113,
+   "refdomains": 6857
+  },
+  {
+   "date": "2025-10",
+   "backlinks": 7257829,
+   "refdomains": 6809
+  },
+  {
+   "date": "2025-11",
+   "backlinks": 7001739,
+   "refdomains": 6866
+  },
+  {
+   "date": "2025-12",
+   "backlinks": 7023018,
+   "refdomains": 6800
+  },
+  {
+   "date": "2026-01",
+   "backlinks": 7006926,
+   "refdomains": 6670
+  },
+  {
+   "date": "2026-02",
+   "backlinks": 6940530,
+   "refdomains": 6652
+  },
+  {
+   "date": "2026-03",
+   "backlinks": 6909346,
+   "refdomains": 6771
+  },
+  {
+   "date": "2026-04",
+   "backlinks": 6881736,
+   "refdomains": 6811
+  },
+  {
+   "date": "2026-05",
+   "backlinks": 6832140,
+   "refdomains": 6956
+  },
+  {
+   "date": "2026-06",
+   "backlinks": 6660913,
+   "refdomains": 7005
+  },
+  {
+   "date": "2026-07",
+   "backlinks": 6221320,
+   "refdomains": 7328
+  }
+ ],
+ "refdomains": [
+  {
+   "domain": "yahoo.com",
+   "ascore": 100,
+   "backlinks": 49,
+   "country": "us"
+  },
+  {
+   "domain": "bing.com",
+   "ascore": 97,
+   "backlinks": 3,
+   "country": "us"
+  },
+  {
+   "domain": "service-public.fr",
+   "ascore": 92,
+   "backlinks": 4,
+   "country": "fr"
+  },
+  {
+   "domain": "service-public.gouv.fr",
+   "ascore": 88,
+   "backlinks": 8,
+   "country": "fr"
+  },
+  {
+   "domain": "lefigaro.fr",
+   "ascore": 87,
+   "backlinks": 2,
+   "country": ""
+  },
+  {
+   "domain": "bfmtv.com",
+   "ascore": 86,
+   "backlinks": 34,
+   "country": "us"
+  },
+  {
+   "domain": "francetvinfo.fr",
+   "ascore": 85,
+   "backlinks": 1,
+   "country": "us"
+  },
+  {
+   "domain": "substack.com",
+   "ascore": 85,
+   "backlinks": 1,
+   "country": ""
+  },
+  {
+   "domain": "pagesjaunes.fr",
+   "ascore": 84,
+   "backlinks": 1,
+   "country": ""
+  },
+  {
+   "domain": "caf.fr",
+   "ascore": 82,
+   "backlinks": 10,
+   "country": "fr"
+  },
+  {
+   "domain": "marmiton.org",
+   "ascore": 81,
+   "backlinks": 3,
+   "country": "us"
+  },
+  {
+   "domain": "zendesk.com",
+   "ascore": 81,
+   "backlinks": 2,
+   "country": "us"
+  },
+  {
+   "domain": "20minutes.fr",
+   "ascore": 80,
+   "backlinks": 1,
+   "country": "us"
+  },
+  {
+   "domain": "sncf-connect.com",
+   "ascore": 78,
+   "backlinks": 2,
+   "country": ""
+  },
+  {
+   "domain": "actu.fr",
+   "ascore": 76,
+   "backlinks": 15,
+   "country": ""
+  },
+  {
+   "domain": "rtl.fr",
+   "ascore": 76,
+   "backlinks": 2,
+   "country": "us"
+  },
+  {
+   "domain": "boursorama.com",
+   "ascore": 75,
+   "backlinks": 1,
+   "country": "fr"
+  },
+  {
+   "domain": "economie.gouv.fr",
+   "ascore": 75,
+   "backlinks": 3,
+   "country": ""
+  },
+  {
+   "domain": "paris.fr",
+   "ascore": 75,
+   "backlinks": 2,
+   "country": "us"
+  },
+  {
+   "domain": "sfr.fr",
+   "ascore": 75,
+   "backlinks": 1,
+   "country": "fr"
+  },
+  {
+   "domain": "sudouest.fr",
+   "ascore": 75,
+   "backlinks": 4,
+   "country": "us"
+  },
+  {
+   "domain": "ledauphine.com",
+   "ascore": 74,
+   "backlinks": 1,
+   "country": "fr"
+  },
+  {
+   "domain": "tf1info.fr",
+   "ascore": 74,
+   "backlinks": 7,
+   "country": "gr"
+  },
+  {
+   "domain": "eatbu.com",
+   "ascore": 73,
+   "backlinks": 2,
+   "country": "us"
+  },
+  {
+   "domain": "leprogres.fr",
+   "ascore": 71,
+   "backlinks": 1,
+   "country": "fr"
+  },
+  {
+   "domain": "letelegramme.fr",
+   "ascore": 71,
+   "backlinks": 1,
+   "country": ""
+  },
+  {
+   "domain": "quechoisir.org",
+   "ascore": 71,
+   "backlinks": 4,
+   "country": ""
+  },
+  {
+   "domain": "nicematin.com",
+   "ascore": 70,
+   "backlinks": 2,
+   "country": "us"
+  },
+  {
+   "domain": "education.fr",
+   "ascore": 68,
+   "backlinks": 6,
+   "country": "us"
+  },
+  {
+   "domain": "femmeactuelle.fr",
+   "ascore": 68,
+   "backlinks": 3,
+   "country": "tr"
+  }
+ ],
+ "anchors": [
+  {
+   "anchor": "chèques vacances",
+   "domains": 13,
+   "backlinks": 6815,
+   "toxic": false
+  },
+  {
+   "anchor": "<EmptyAnchor>",
+   "domains": 106,
+   "backlinks": 2444,
+   "toxic": false
+  },
+  {
+   "anchor": "utiliser vos chèques-vacances papiers et dématérialisés",
+   "domains": 435,
+   "backlinks": 2370,
+   "toxic": false
+  },
+  {
+   "anchor": "utiliser vos e-chèques-vacances sur l'application chèque-vacances connect",
+   "domains": 435,
+   "backlinks": 2370,
+   "toxic": false
+  },
+  {
+   "anchor": "demande d'échange de chèques-vacances ou de mise en recherche de titres perdus ou volés",
+   "domains": 405,
+   "backlinks": 2311,
+   "toxic": false
+  },
+  {
+   "anchor": "utiliser vos chèques-vacances",
+   "domains": 471,
+   "backlinks": 2273,
+   "toxic": false
+  },
+  {
+   "anchor": "telegram @seo_anomaly - seo backlinks, black-links, traffic boost, link indexing",
+   "domains": 360,
+   "backlinks": 2254,
+   "toxic": true
+  },
+  {
+   "anchor": "demande d'échange de chèques-vacances périmés ou de mise en recherche de titres perdus ou volés",
+   "domains": 442,
+   "backlinks": 2226,
+   "toxic": false
+  },
+  {
+   "anchor": "accéder au service en ligne open_in_new",
+   "domains": 440,
+   "backlinks": 2225,
+   "toxic": false
+  },
+  {
+   "anchor": "utiliser vos e-chèques-vacances",
+   "domains": 440,
+   "backlinks": 2222,
+   "toxic": false
+  },
+  {
+   "anchor": "ancv",
+   "domains": 60,
+   "backlinks": 1852,
+   "toxic": false
+  },
+  {
+   "anchor": "demander l'échange de votre coupon sport",
+   "domains": 447,
+   "backlinks": 1116,
+   "toxic": false
+  },
+  {
+   "anchor": "les coupons sport open_in_new",
+   "domains": 441,
+   "backlinks": 1109,
+   "toxic": false
+  },
+  {
+   "anchor": "tg @bhs_links - best seo links - https://t.me/bhs_links",
+   "domains": 279,
+   "backlinks": 1034,
+   "toxic": true
+  },
+  {
+   "anchor": "accessibilité : non conforme",
+   "domains": 1,
+   "backlinks": 967,
+   "toxic": false
+  },
+  {
+   "anchor": "les hébergements",
+   "domains": 1,
+   "backlinks": 908,
+   "toxic": false
+  },
+  {
+   "anchor": "les restaurants",
+   "domains": 1,
+   "backlinks": 908,
+   "toxic": false
+  },
+  {
+   "anchor": "🎈 nos guides voyage !",
+   "domains": 1,
+   "backlinks": 908,
+   "toxic": false
+  },
+  {
+   "anchor": "🎬 nos vidéos",
+   "domains": 1,
+   "backlinks": 908,
+   "toxic": false
+  },
+  {
+   "anchor": "> tout le réseau",
+   "domains": 1,
+   "backlinks": 907,
+   "toxic": false
+  },
+  {
+   "anchor": "le réseau",
+   "domains": 1,
+   "backlinks": 907,
+   "toxic": false
+  },
+  {
+   "anchor": "les loisirs sportifs",
+   "domains": 1,
+   "backlinks": 907,
+   "toxic": false
+  },
+  {
+   "anchor": "🍃 voyage 100% nature",
+   "domains": 1,
+   "backlinks": 907,
+   "toxic": false
+  },
+  {
+   "anchor": "ancv connect",
+   "domains": 12,
+   "backlinks": 899,
+   "toxic": false
+  },
+  {
+   "anchor": "🧳 nos idées week-ends",
+   "domains": 1,
+   "backlinks": 878,
+   "toxic": false
+  }
+ ],
+ "toxic_backlinks": 3288,
+ "pages": {
+  "https://leguide.ancv.com/account/trades/step-1": {
+   "bl": 7009,
+   "rd": 635
+  },
+  "https://leguide.ancv.com": {
+   "bl": 3589,
+   "rd": 324
+  },
+  "https://leguide.ancv.com/enseignes-cvco": {
+   "bl": 3181,
+   "rd": 686
+  },
+  "https://leguide.ancv.com/ptl/recherche/list": {
+   "bl": 2762,
+   "rd": 512
+  },
+  "https://leguide.ancv.com/inspiration/notre-reseau-de-professionnel-du-tourisme": {
+   "bl": 2248,
+   "rd": 165
+  },
+  "https://leguide.ancv.com/page/coupon-sport-pour-vos-envies-sportives": {
+   "bl": 1426,
+   "rd": 641
+  },
+  "https://leguide.ancv.com/enseignes/hebergements": {
+   "bl": 1020,
+   "rd": 9
+  },
+  "https://leguide.ancv.com/notre-actualite": {
+   "bl": 958,
+   "rd": 3
+  },
+  "https://leguide.ancv.com/inspiration/que-faire-avec-le-cheque-vacances-connect": {
+   "bl": 951,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/inspiration/conseils-aux-voyageurs": {
+   "bl": 940,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/inspiration/activites-cheques-vacances": {
+   "bl": 935,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/enseignes/restaurants": {
+   "bl": 926,
+   "rd": 8
+  },
+  "https://leguide.ancv.com/inspiration/voyage-nature": {
+   "bl": 924,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/enseignes/arts-culture": {
+   "bl": 923,
+   "rd": 5
+  },
+  "https://leguide.ancv.com/inspiration/idee-de-week-end": {
+   "bl": 923,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/inspiration/vacances-au-ski": {
+   "bl": 923,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/enseignes/loisirs-sportifs": {
+   "bl": 918,
+   "rd": 4
+  },
+  "https://leguide.ancv.com/enseignes/voyage-transports": {
+   "bl": 918,
+   "rd": 3
+  },
+  "https://leguide.ancv.com/guides-regions": {
+   "bl": 918,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/guides-voyages": {
+   "bl": 913,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/a-la-montagne": {
+   "bl": 913,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/page/cheque-vacances-connect-le-format-digital": {
+   "bl": 763,
+   "rd": 77
+  },
+  "https://leguide.ancv.com/enseignes/arts-culture/billetterie-spectacles": {
+   "bl": 331,
+   "rd": 139
+  },
+  "https://leguide.ancv.com/inspiration/film-halloween": {
+   "bl": 200,
+   "rd": 195
+  },
+  "https://leguide.ancv.com/page/le-e-cheque-vacances-le-chequier-pour-regler-sur-internet": {
+   "bl": 176,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/inspiration/films-cultes": {
+   "bl": 172,
+   "rd": 171
+  },
+  "https://leguide.ancv.com/inspiration/activites-couple": {
+   "bl": 102,
+   "rd": 101
+  },
+  "https://leguide.ancv.com/inspiration/lieux-insolites-teletravailler": {
+   "bl": 58,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/vacances-insolites-octobre": {
+   "bl": 44,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/enseignes/hebergements/locations-vacances": {
+   "bl": 43,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/inspiration/activite-bien-etre": {
+   "bl": 43,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/musee-archeologique": {
+   "bl": 43,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/cours-de-cuisine": {
+   "bl": 42,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/musee-a-visiter": {
+   "bl": 42,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/que-visiter-a-brest": {
+   "bl": 28,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/que-visiter-a-toulon": {
+   "bl": 28,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/que-visiter-au-havre": {
+   "bl": 28,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/que-visiter-grenoble": {
+   "bl": 28,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/visiter-caen": {
+   "bl": 28,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/account/contact": {
+   "bl": 24,
+   "rd": 13
+  },
+  "https://leguide.ancv.com/inspiration/randonnee-en-ete": {
+   "bl": 23,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/village-autour-de-nice": {
+   "bl": 23,
+   "rd": 3
+  },
+  "https://leguide.ancv.com/inspiration/liste-materiel-journee-randonnee": {
+   "bl": 22,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/que-faire-autour-de-bordeaux": {
+   "bl": 22,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/que-faire-autour-de-la-rochelle": {
+   "bl": 22,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/que-faire-autour-de-marseille": {
+   "bl": 22,
+   "rd": 3
+  },
+  "https://leguide.ancv.com/inspiration/que-faire-la-rochelle": {
+   "bl": 22,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/vacances-insolites": {
+   "bl": 21,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/beaux-villages-autour-de-toulon": {
+   "bl": 20,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/que-faire-autour-de-nice": {
+   "bl": 20,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/visiter-verdun": {
+   "bl": 20,
+   "rd": 3
+  },
+  "https://leguide.ancv.com/inspiration/que-faire-en-paca": {
+   "bl": 17,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/region-grand-est-france": {
+   "bl": 17,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/page/peut-utiliser-les-cheques-vacances-letranger": {
+   "bl": 17,
+   "rd": 6
+  },
+  "https://leguide.ancv.com/inspiration/cheque-vacances-massage": {
+   "bl": 16,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/inspiration/week-end-pas-cher-europe": {
+   "bl": 16,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/page/le-cheque-vacances-le-format-papier-classique": {
+   "bl": 16,
+   "rd": 10
+  },
+  "https://leguide.ancv.com/inspiration/challenge-24h-chrono": {
+   "bl": 14,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/inspiration/week-end-en-amoureux": {
+   "bl": 14,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/inspiration/journee-patrimoine-bretagne": {
+   "bl": 13,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/journee-patrimoine-nantes": {
+   "bl": 13,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/journees-du-patrimoine-bordeaux": {
+   "bl": 13,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/voyage-nature-famille": {
+   "bl": 13,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/balade-velo-lille": {
+   "bl": 12,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/balade-velo-strasbourg": {
+   "bl": 12,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/balade-velo-vendee": {
+   "bl": 12,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/journees-du-patrimoine-angers": {
+   "bl": 12,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/journees-du-patrimoine-lille": {
+   "bl": 12,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/preparer-sa-valise": {
+   "bl": 12,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/inspiration/preparer-un-voyage": {
+   "bl": 12,
+   "rd": 4
+  },
+  "https://leguide.ancv.com/enseignes/hebergements/campings": {
+   "bl": 11,
+   "rd": 5
+  },
+  "https://leguide.ancv.com/inspiration/voyage-nature-sauvage": {
+   "bl": 11,
+   "rd": 2
+  },
+  "https://leguide.ancv.com/enseignes/hebergements/hotels": {
+   "bl": 10,
+   "rd": 3
+  },
+  "https://leguide.ancv.com/inspiration/cheque-vacances-lyon": {
+   "bl": 10,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/itineraire-velo-paris": {
+   "bl": 10,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/micro-aventure-paris": {
+   "bl": 10,
+   "rd": 1
+  },
+  "https://leguide.ancv.com/inspiration/que-faire-a-annecy": {
+   "bl": 10,
+   "rd": 1
+  }
+ }
+}

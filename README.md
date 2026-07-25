@@ -1,21 +1,32 @@
-# Suivi de positionnement SEO — Le Guide ANCV
+# Cockpit SEO — Le Guide ANCV
 
-Tableau de bord en ligne pour suivre la campagne de mots-clés du projet Semrush
-(position, évolution, URL positionnée, type de résultat SERP, tags, intention,
-volume, difficulté KD), hébergé sur Netlify.
+Tableau de bord en ligne (hébergé sur Netlify) à 5 onglets :
+
+1. **Mots-clés** — suivi de position complet (position, évolution, URL, type SERP, tags, intention, volume, KD) avec recherche, filtres et export.
+2. **Statistiques** — répartition des positions, quick wins, pages hub, SERP features, intentions, tags.
+3. **🎯 Priorités** — croisement *position × volume × backlinks de la page* → recommandation d'action (netlinking / on-page).
+4. **Netlinking** — Authority Score, backlinks, domaines référents, tendance, top référents, ancres (détection d'ancres toxiques).
+5. **Maillage & technique** — santé du Site Audit, contrôles de maillage interne, problèmes on-page, pages 4xx.
 
 ## Contenu du dépôt
 
 ```
-index.html                     Interface (recherche, tri, filtres, export CSV)
-data.json                      Données affichées (générées depuis l'export Semrush)
-data/semrush_export.csv        Export « Position Tracking – Rankings overview » (SOURCE)
+index.html                     Interface (5 onglets)
+data.json                      Suivi de position (généré depuis l'export Semrush)
+netlinking.json                Backlinks (généré par build_extras.py)
+audit.json                     Site Audit / maillage (généré par build_extras.py)
+data/semrush_export.csv        Export « Position Tracking – Rankings overview » (SOURCE positions)
 data/keywords.txt              Liste des mots-clés (régénérée depuis l'export)
-scripts/build_from_csv.py      Génère data.json depuis l'export CSV  ← principal
+scripts/build_from_csv.py      Génère data.json depuis l'export CSV
+scripts/build_extras.py        Génère netlinking.json + audit.json (données Backlinks & Site Audit)
 scripts/refresh.py             (Optionnel) rafraîchit volume/KD/intention via l'API
-netlify.toml                   Config Netlify (build = build_from_csv.py)
+netlify.toml                   Config Netlify (build = build_from_csv.py && build_extras.py)
 .github/workflows/weekly-update.yml   (Optionnel) refresh métriques via API
 ```
+
+> **Netlinking & maillage** : les données de `build_extras.py` sont un instantané
+> (les blocs Semrush sont embarqués dans le script). Pour les rafraîchir, remplacer
+> ces blocs par de nouveaux exports Backlinks/Site Audit, ou brancher l'API Semrush.
 
 ## Comment ça se met à jour
 
